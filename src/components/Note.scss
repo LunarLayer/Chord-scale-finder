@@ -1,0 +1,33 @@
+.note {
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  aspect-ratio: 1/ 1;
+  min-width: calc(var(--note_min_width) * 1px);
+  width: calc(var(--note_max_width) * 1px);
+  max-width: calc(var(--note_max_width) * 1px);
+
+  border: 2px solid black;
+  border-radius: 10%;
+
+  &.hidden {
+    visibility: hidden;
+  }
+
+  &.sharp::after {
+    content: "#";
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+  }
+
+  &:hover {
+    color: white;
+    background-color: var(--selected);
+  }
+}

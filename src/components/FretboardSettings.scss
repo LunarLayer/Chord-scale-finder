@@ -1,0 +1,55 @@
+#fretboardSettings {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 0 10px;
+
+  .string {
+    display: flex;
+    gap: 5px;
+    max-width: 100%;
+  }
+
+  .add {
+    .note {
+      opacity: 0;
+
+      &:first-of-type {
+        opacity: 1;
+        color: blue;
+      }
+    }
+    &:hover {
+      .note {
+        opacity: 0.5;
+
+        &:first-of-type { opacity: 1; }
+      }
+    }
+
+    .note {
+      &:hover {
+        opacity: 1;
+      }
+
+
+    }
+  }
+
+  .remove {
+    .note:first-of-type {
+      color: red;
+    }
+  }
+
+  @media(max-width: 600px) {
+    gap: 2px;
+    padding: 0 5px;
+    
+    .string {
+      gap: 2px;
+    }
+  }
+}

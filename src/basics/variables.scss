@@ -1,0 +1,18 @@
+:root {
+  --selected: purple;
+  --white: #ffffff;
+
+  // Breakpoints:
+  --small: 600px;
+  --medium: 767px;
+  --large: 900px;
+
+  // Gaps
+  --s_gap: 5px;
+  --m_gap: 10px;
+  --l_gap: 20px;
+
+  // Notes
+  --note_min_width: 20;
+  --note_max_width: 45;
+}

@@ -1,0 +1,77 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px 15px;
+  flex-wrap: wrap;
+  max-width: var(--large);
+  margin: 0 auto;
+  padding: 20px 10px;
+
+  h3 {
+    user-select: none;
+  }
+
+  button,
+  .slider {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 5px;
+    border: 2px solid black;
+    border-radius: 3px;
+    background-color: white;
+
+    &.selected {
+      color: white;
+      // background-color: var(--selected);
+      background-color: var(--selected);
+    }
+  }
+
+  .frets-slider {
+    .slider {
+      cursor: unset;
+      padding: 0;
+
+      input {
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        height: 2px;
+        background-color: black;
+        // outline: none;
+
+        &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: var(--selected);
+        }
+      }
+    }
+  }
+
+  .disabled {
+    opacity: 0.2;
+
+    button,
+    .slider {
+
+      input {
+        user-select: none;
+        cursor: default;
+      }
+
+      cursor: unset;
+    }
+  }
+
+  @media(max-width: 600px) {
+    padding: 20px 5px;
+    // .frets-slider {
+    //   margin: 0 auto;
+    // }
+  }
+}

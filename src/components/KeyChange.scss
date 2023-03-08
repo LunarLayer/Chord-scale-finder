@@ -1,0 +1,89 @@
+.keyChange {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 0 10px;
+  margin: 0 auto;
+  max-width: var(--large);
+
+  .keySelect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    max-width: 100%;
+
+    .black-keys, .white-keys {
+      display: flex;
+      gap: 5px;
+
+      .note.selected {
+        color: white;
+        background-color: var(--selected);
+      }
+    }
+
+    .black-keys { max-width: 85.51%; }
+    .white-keys { max-width: 100%; }
+  }
+
+  .scaleSelect {
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+    width: 345px;
+    max-width: 100%;
+
+    * {
+      font-weight: bold;
+      height: 45px;
+      background-color: white;
+      border-radius: 5px;
+
+      &:hover { 
+        cursor: pointer;
+        color: white; 
+      }
+    }
+    .major {
+      color: red;
+      padding: 0 10px;
+
+      &:hover {
+        color: white;
+        background-color: var(--selected);
+      }
+
+      &.selected {
+        border: 2px solid black;
+        background-color: var(--selected);
+        color: white;
+      }
+    }
+    .minor {
+      padding: 0 10px;
+      color: blue;
+
+      &:hover {
+        color: white;
+        background-color: var(--selected);
+      }
+
+      &.selected {
+        border: 2px solid black;
+        background-color: var(--selected);
+        color: white;
+      }
+    }
+    .done {
+      margin-left: auto;
+      color: green;
+
+      &:hover {
+        background-color: green;
+        color: white;
+      }
+    }
+  }
+}
