@@ -1,13 +1,16 @@
-.toolbar {
+#toolbar {
   display: flex;
   justify-content: space-between;
   gap: 5px 15px;
   flex-wrap: wrap;
   max-width: var(--large);
   margin: 0 auto;
-  padding: 20px 10px;
+  padding: 20px;
+  user-select: none;
 
   h3 {
+    font-size: 16px;
+    font-weight: 600;
     user-select: none;
   }
 
@@ -18,13 +21,12 @@
     align-items: center;
     min-height: 30px;
     padding: 0 5px;
-    border: 2px solid black;
-    border-radius: 3px;
+    border: 1px solid black;
+    // border-radius: 3px;
     background-color: white;
 
     &.selected {
       color: white;
-      // background-color: var(--selected);
       background-color: var(--selected);
     }
   }
@@ -38,7 +40,7 @@
         cursor: pointer;
         appearance: none;
         -webkit-appearance: none;
-        height: 2px;
+        height: 1px;
         background-color: black;
         // outline: none;
 
@@ -68,10 +70,16 @@
     }
   }
 
-  @media(max-width: 600px) {
-    padding: 20px 5px;
-    // .frets-slider {
-    //   margin: 0 auto;
-    // }
+}
+
+@media(max-width: 900px) {
+  #toolbar {
+    padding: 15px;
+  }
+}
+
+@media(max-width: 600px) {
+  #toolbar {
+    padding: 10px;
   }
 }

@@ -1,55 +1,93 @@
 #fretboardSettings {
-  border: 1px solid red;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
   padding: 0 10px;
 
-  .string {
+  .strings {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 5px;
+    width: fit-content;
     max-width: 100%;
-  }
 
-  .add {
-    .note {
-      opacity: 0;
-
-      &:first-of-type {
-        opacity: 1;
-        color: blue;
-      }
+    .string { // Overrides string styling due to added +/- note
+      display: flex;
+      gap: 5px;
+      max-width: 100%;
     }
-    &:hover {
+
+    .add {
       .note {
-        opacity: 0.5;
+        opacity: 0;
 
-        &:first-of-type { opacity: 1; }
+        &:first-of-type {
+          opacity: 1;
+          color: blue;
+        }
       }
-    }
 
-    .note {
       &:hover {
-        opacity: 1;
+        .note {
+          opacity: 0.5;
+
+          &:first-of-type {
+            opacity: 1;
+          }
+        }
       }
 
+      .note {
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
 
+    .remove {
+      .note:first-of-type {
+        color: red;
+      }
     }
   }
 
-  .remove {
-    .note:first-of-type {
-      color: red;
-    }
+  .settings {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
   }
 
-  @media(max-width: 600px) {
-    gap: 2px;
+}
+@media(max-width: 900px) {
+  #fretboardSettings {
+    .strings {
+      .string {
+        .note {
+          max-width: 35px;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 600px) {
+  #fretboardSettings {
     padding: 0 5px;
     
-    .string {
-      gap: 2px;
+    .strings {
+      .string {
+        .note {
+          max-width: 30px;
+        }
+      }
+      .add {
+        .note {
+          opacity: 0.1;
+        }
+      }
     }
   }
 }

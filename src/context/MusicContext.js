@@ -80,18 +80,18 @@ export default function MusicContextProvider({ children }) {
 
 
   const notes = [
-    { name: "C", color: "white", alternateName: [null], sharpsFlats: [] },
-    { name: "C#", color: "black", alternateName: ["Db"], sharpsFlats: ["Bb", "Eb", "Ab", "Db", "Gb"] },
-    { name: "D", color: "white", alternateName: [null], sharpsFlats: ["F#", "C#"] },
-    { name: "D#", color: "black", alternateName: ["Eb"], sharpsFlats: ["Bb", "Eb", "Ab"] },
-    { name: "E", color: "white", alternateName: [null], sharpsFlats: ["F#", "C#", "G#", "D#"] },
-    { name: "F", color: "white", alternateName: [null], sharpsFlats: ["Bb"] },
-    { name: "F#", color: "black", alternateName: ["Gb"], sharpsFlats: ["F#", "C#", "G#", "D#", "A#", "E#"] },
-    { name: "G", color: "white", alternateName: [null], sharpsFlats: ["F#"] },
-    { name: "G#", color: "black", alternateName: ["Db"], sharpsFlats: ["Bb", "Eb", "Ab", "Db"] },
-    { name: "A", color: "white", alternateName: [null], sharpsFlats: ["F#", "C#", "G#"] },
-    { name: "A#", color: "black", alternateName: ["Db"], sharpsFlats: ["Bb", "Eb"] },
-    { name: "B", color: "white", alternateName: [null], sharpsFlats: ["F#", "C#", "G#", "D#", "A#"] },
+    { name: "C",  color: "white", alternateName: [null] },
+    { name: "C#", color: "black", alternateName: ["Db"] },
+    { name: "D",  color: "white", alternateName: [null] },
+    { name: "D#", color: "black", alternateName: ["Eb"] },
+    { name: "E",  color: "white", alternateName: [null] },
+    { name: "F",  color: "white", alternateName: [null] },
+    { name: "F#", color: "black", alternateName: ["Gb"] },
+    { name: "G",  color: "white", alternateName: [null] },
+    { name: "G#", color: "black", alternateName: ["Db"] },
+    { name: "A",  color: "white", alternateName: [null] },
+    { name: "A#", color: "black", alternateName: ["Db"] },
+    { name: "B",  color: "white", alternateName: [null] }
   ];
 
   return (

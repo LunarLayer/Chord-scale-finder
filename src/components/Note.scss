@@ -11,7 +11,7 @@
   width: calc(var(--note_max_width) * 1px);
   max-width: calc(var(--note_max_width) * 1px);
 
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 10%;
 
   &.hidden {
@@ -29,5 +29,44 @@
   &:hover {
     color: white;
     background-color: var(--selected);
+  }
+
+  &.colored {
+    &[data-note="A"] {
+      background-color: #F68567;
+    }
+    &[data-note="A#"] {
+      background-color: #F489A7;
+    }
+    &[data-note="B"] {
+      background-color: #DF92BE;
+    }
+    &[data-note="C"] {
+      background-color: #AC8BC0;
+    }
+    &[data-note="C#"] {
+      background-color: #9087C0;
+    }
+    &[data-note="D"] {
+      background-color: #879BCE;
+    }
+    &[data-note="D#"] {
+      background-color: #96D1F3;
+    }
+    &[data-note="E"] {
+      background-color: #ABDAC6;
+    }
+    &[data-note="F"] {
+      background-color: #ABD595;
+    }
+    &[data-note="F#"] {
+      background-color: #C1DD89;
+    }
+    &[data-note="G"] {
+      background-color: #F9F18C;
+    }
+    &[data-note="G#"] {
+      background-color: #FEC679;
+    }
   }
 }

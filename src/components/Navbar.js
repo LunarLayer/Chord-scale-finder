@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <>
       <div className='navbar'>
-        <a href='https://lunarlayer.com'>Navbar</a>
+        <a href='https://lunarlayer.com'>LunarLayer</a>
         {/* <div className='projectsMenu'>
           <button>New</button>
           <button>Save</button>

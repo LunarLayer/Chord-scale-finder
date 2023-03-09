@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 
-import './Display.scss';
 import { MusicContext } from '../context/MusicContext';
 
 import Fretboard from './Fretboard';

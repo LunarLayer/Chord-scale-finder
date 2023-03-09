@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './Note.scss';
 
-const Note = ({ note, color, border, hidden }) => {
+import { MusicContext } from '../context/MusicContext';
+
+const Note = ({ note, border, hidden }) => {
+  const music = useContext(MusicContext);
   const classList = ["note"];
 
   if (note.length > 1) classList.push("sharp");
+  if (music.coloredNotes) classList.push("colored");
 
   return (
-    <div className={classList.join(" ")}>
+    <div className={classList.join(" ")} data-note={note}>
       {note.substring(0, 1)}
     </div>
   )

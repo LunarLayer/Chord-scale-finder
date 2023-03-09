@@ -8,18 +8,25 @@ import String from './String';
 const Fretboard = () => {
   const music = useContext(MusicContext);
   let notes = document.getElementsByClassName('note');
+  let fretNumbers = [];
+  for (let i = 0; i <= music.fretCount; i++) {
+    fretNumbers.push(i);
+  }
 
   useEffect(() => {
     const handleResize = () => {
       let fretboard = document.getElementById('fretboard');
+      let fretNumbers = document.getElementById('fretNumbers');
       if (notes[0]) {
         let width = notes[0].offsetWidth;
         
         if (width === 45) {
           fretboard.style.fontSize = "25px";
+          fretNumbers.style.fontSize = "15px";
         } else {
           let size = width / 2;
           fretboard.style.fontSize = size + "px";
+          fretNumbers.style.fontSize = (size - 5) + "px";
         }
       }
     }
@@ -28,11 +35,21 @@ const Fretboard = () => {
     return () => { window.removeEventListener('resize', handleResize); };
     // TODO: (maybe add debounce)
   });
+
+  // generate array of noteIndexes
+  // 
+  
   
   
   return (
     <>
       <div id='fretboard'>
+        <div id='fretNumbers'>
+          {fretNumbers.map(num => {
+            console.log(num);
+            return <p key={"fretNum_" + num}>{num}</p>
+          })}
+        </div>
         {music.strings.map(string => {
           return <String key={"string_" + string.number} index={string.number} firstNote={string.note}></String>
         })}

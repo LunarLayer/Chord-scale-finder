@@ -2,28 +2,55 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
   padding: 0 10px;
+  margin: 0 auto;
+  width: fit-content;
+  max-width: 100%;
 
-  .string {
+  //
+  // cursor: grab;
+  // overflow-y: hidden;
+  // overflow-x: auto;
+  // overscroll-behavior-x: contain;
+  // scroll-snap-type: x mandatory;
+  //
+
+  #fretNumbers {
     display: flex;
-    gap: 5px;
-    max-width: 100%;
-  }
+    gap: 8px;
+    width: 100%;
+    margin-bottom: -8px;
 
-  @media(max-width: 600px) {
-    gap: 2px;
-    padding: 0 5px;
-    
-    .string {
-      gap: 2px;
+    p {
+      display: flex;
+      justify-content: center;
+      min-width: calc(var(--note_min_width) * 1px);
+      width: calc(var(--note_max_width) * 1px);
+      max-width: calc(var(--note_max_width) * 1px);
     }
   }
 }
 
+@media(max-width: 900px) {
+  #fretboard {
+    gap: 6px;
 
+    #fretNumbers {
+      gap: 6px;
+      margin-bottom: -6px;
+    }
+  }
+}
 
+@media(max-width: 600px) {
+  #fretboard {
+    gap: 4px;
+    padding: 0 5px;
 
-
-// Page loads
-// Frets are based on fretCount
+    #fretNumbers {
+      gap: 4px;
+      margin-bottom: -4px;
+    }
+  }
+}

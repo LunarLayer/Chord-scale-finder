@@ -23,26 +23,34 @@ const FretboardSettings = () => {
     }
     handleResize();
     window.addEventListener('resize', handleResize);
+    
     return () => { window.removeEventListener('resize', handleResize); };
 
-    // TODO: Limit frets on smaller screen (maybe add debounce)
+    // TODO: (maybe add debounce)
   });
 
-  function addString(pos) {
-    console.log("addString(): " + pos);
+  function toggleColoredNotes() {
+    if (music.coloredNotes) {
+      music.setColoredNotes(false);
+    } else {
+      music.setColoredNotes(true);
+    }
   }
 
   return (
     <>
       <div id='fretboardSettings'>
-        <div className='row'>
-          <button onClick={addString(() => music.strings.length + 1)}></button>
-          <String firstNote="C"></String>
+        <div className='strings'>
+          <String type="add" index={parseInt(music.strings.length) + 1}/>
+          {music.strings.map(string => {
+            return <String key={"string_" + string.number} index={string.number} firstNote={string.note} type="remove"/>
+          })}
+          <String type="add" index={0}/>
         </div>
-        {music.strings.map(string => {
-          return <String context="remove" key={"string_" + string.number} index={string.number} firstNote={string.note} />
-        })}
-        <String context="add" index={"addBottom"} firstNote="B" />
+        <div className='settings'>
+          <button onClick={() => toggleColoredNotes()}>Colored notes</button>
+          <button>Tuning</button>
+        </div>
       </div>
     </>
   );
