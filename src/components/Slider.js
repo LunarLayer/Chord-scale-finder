@@ -20,10 +20,6 @@ const Slider = ({ clicked }) => {
   let sliderMax = getSliderMax();
   let sliderValue = music.fretCount;
 
-
-
-
-  
   useEffect(() => {
     let noteMaxWidth = 45;
     let padding = 20;

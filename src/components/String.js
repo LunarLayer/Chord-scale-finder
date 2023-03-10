@@ -12,6 +12,8 @@ const String = ({ index, firstNote, type }) => {
   let pointer = "";
   let offset = music.notes.findIndex((note) => note.name === firstNote);
 
+  let invisibleNotes = [];
+
   switch (type) {
     case "add":
       return (
@@ -37,24 +39,23 @@ const String = ({ index, firstNote, type }) => {
       )
     default:
       for (let i = 0; i < parseInt(music.fretCount) + 1; i++) {
-        pointer = (i + offset) % music.notes.length;
+        pointer = (offset++) % music.notes.length;
         notes.push(music.notes[pointer]);
+      }
+      for (let i = 0; i < 24 - parseInt(music.fretCount); i++) {
+        pointer = (i + offset) % music.notes.length;
+        invisibleNotes.push(music.notes[pointer]);
       }
       return (
         <div id={"string_" + index} className={`string normal`}>
           {notes.map((note, index) => {
             return <Note key={"note_" + index} note={note.name}></Note>
           })}
-          {/* <div className='invisiNotes string normal'>
-            <Note note={"X"}></Note>
-            <Note note={"X"}></Note>
-            <Note note={"X"}></Note>
-            <Note note={"X"}></Note>
-            <Note note={"X"}></Note>
-            <Note note={"X"}></Note>
-            <Note note={"X"}></Note>
-            <Note note={"X"}></Note>
-          </div> */}
+          <div className='invisiNotes string normal'>
+            {invisibleNotes.map((note, index) => {
+              return <Note key={"note_" + index} note={note.name}></Note>
+            })}
+          </div>
         </div>
       )
   }

@@ -6,36 +6,36 @@
 
 
 
-  // &.normal {
-  //   .note {
-  //     scroll-snap-align: start;
-  //   }
+  &.normal {
+    .note {
+      scroll-snap-align: start;
+    }
 
-  //   .invisiNotes {
-  //     position: absolute;
-  //     left: 100%;
-  //     padding-left: 8px;
-  //     display: flex;
-  //     gap: 8px;
-     
-  //     .note {
-  //       background-color: red;
-  //     }
-  //   }
+    .invisiNotes {
+      position: absolute;
+      left: 100%;
+      margin-left: 8px;
+      display: flex;
+      gap: 8px;
+      
+      .note {
+ 
+      }
+    }
 
-  //   @media(max-width: 900px) {
-  //     .invisiNotes {
-  //       padding-left: 6px;
-  //       gap: 6px;
-  //     }
-  //   }
-  //   @media(max-width: 600px) {
-  //     .invisiNotes {
-  //       padding-left: 4px;
-  //       gap: 4px;
-  //     }
-  //   }
-  // }
+    @media(max-width: 900px) {
+      .invisiNotes {
+        margin-left: 6px;
+        gap: 6px;
+      }
+    }
+    @media(max-width: 600px) {
+      .invisiNotes {
+        margin-left: 4px;
+        gap: 4px;
+      }
+    }
+  }
 
   // &.normal {
   //   &:nth-child(1)::before {
