@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MusicContext from './context/MusicContext';
-import BrowserContext from './context/BrowserContext';
+import BrowserContext from './context/CSFContext';
 
 import Navbar from './components/Navbar';
 import Toolbar from './components/Toolbar';

@@ -51,11 +51,11 @@ const String = ({ index, firstNote, type }) => {
           {notes.map((note, index) => {
             return <Note key={"note_" + index} note={note.name}></Note>
           })}
-          <div className='invisiNotes string normal'>
+          {/* <div className='invisiNotes string normal'>
             {invisibleNotes.map((note, index) => {
               return <Note key={"note_" + index} note={note.name}></Note>
             })}
-          </div>
+          </div> */}
         </div>
       )
   }
