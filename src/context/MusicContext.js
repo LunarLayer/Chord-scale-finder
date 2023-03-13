@@ -1,11 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import { CSFContext } from '../context/CSFContext';
 
 export const MusicContext = React.createContext();
 
 export default function MusicContextProvider({ children }) {
+  const csf = useContext(CSFContext);
+
+  let gap = ""
+  let padding = "";
+  let noteMinWidth = 20;
+  let noteMaxWidth = 45;
+
+  initValues();
+
+
+
+
+
   const [displayView, setDisplayView] = useState("fretboard");
   const [tonality, setTonality] = useState({ note: "C", scale: "Major" });
-  const [fretCount, setFretCount] = useState(12);
+  const [fretCap, setFretCap] = useState(() => {
+    let fretCap = (Math.floor(((csf.windowWidth - (padding * 2)) + gap) / (noteMinWidth + gap))) - 1;
+    if (fretCap > 24) return 24;
+    return fretCap;
+  });
+  const [fretCount, setFretCount] = useState(() => {
+    let optimalFrets = (Math.floor(((csf.windowWidth - (padding * 2)) + gap) / (noteMaxWidth + gap))) + 1;
+    if (csf.windowWidth < 600) {
+      return 12;
+    } else if (optimalFrets > fretCap) return fretCap;
+    return optimalFrets;
+  });
+  
   const [coloredNotes, setColoredNotes] = useState(false);
 
   // Strings
@@ -94,6 +121,20 @@ export default function MusicContextProvider({ children }) {
     { name: "B",  color: "white", alternateName: [null] }
   ];
 
+
+  function initValues() {
+    if (csf.windowWidth <= 600) {
+      padding = 5;
+      gap = 4;
+    } else if (csf.windowWidth > 600 && csf.windowWidth <= 900) {
+      padding = 15;
+      gap = 6;
+    } else {
+      padding = 20;
+      gap = 8;
+    }
+  }
+
   return (
     <MusicContext.Provider
       value={{
@@ -101,6 +142,7 @@ export default function MusicContextProvider({ children }) {
         notes,
         majorChords, minorChords,
         fretCount, setFretCount,
+        fretCap, setFretCap,
         strings, setStrings,
         tonality, setTonality,
         addString, removeString,

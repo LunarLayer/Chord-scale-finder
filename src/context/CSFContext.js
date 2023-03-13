@@ -10,7 +10,7 @@ export default function CSFContextProvider({ children }) {
   const [sliderChanged, setSliderChanged] = useState(false);
 
   // Fretboard
-  const [fretsCap, setFretsCap] = useState(24);
+  
 
   // Display
 
@@ -26,7 +26,7 @@ export default function CSFContextProvider({ children }) {
       window.removeEventListener('resize', handleResize); 
     };
     // TODO: Add debounce
-  });
+  }, []);
 
 
   return (
@@ -39,7 +39,6 @@ export default function CSFContextProvider({ children }) {
         sliderChanged, setSliderChanged,
 
         // Fretboard
-        fretsCap, setFretsCap,
       }}
     >
       {children}

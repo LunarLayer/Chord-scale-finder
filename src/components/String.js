@@ -1,18 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import './String.scss';
 import { MusicContext } from '../context/MusicContext';
+import { CSFContext } from '../context/CSFContext';
 
 import Note from './Note';
 
 const String = ({ index, firstNote, type }) => {
   const music = useContext(MusicContext);
+  const csf = useContext(CSFContext);
 
+  // let frets = csf.sliderChanged ? music.fretCount : optimalFrets;
   let notes = [];
   let pointer = "";
   let offset = music.notes.findIndex((note) => note.name === firstNote);
 
   let invisibleNotes = [];
+  console.log("makestring");
 
   switch (type) {
     case "add":
@@ -42,16 +46,16 @@ const String = ({ index, firstNote, type }) => {
         pointer = (offset++) % music.notes.length;
         notes.push(music.notes[pointer]);
       }
-      for (let i = 0; i < 24 - parseInt(music.fretCount); i++) {
-        pointer = (i + offset) % music.notes.length;
-        invisibleNotes.push(music.notes[pointer]);
-      }
+      // for (let i = 0; i < music.fretCap - music.fretCount; i++) {
+      //   pointer = (i + offset) % music.notes.length;
+      //   invisibleNotes.push(music.notes[pointer]);
+      // }
       return (
         <div id={"string_" + index} className={`string normal`}>
           {notes.map((note, index) => {
             return <Note key={"note_" + index} note={note.name}></Note>
           })}
-          {/* <div className='invisiNotes string normal'>
+          {/* <div className='invisibleNotes string normal'>
             {invisibleNotes.map((note, index) => {
               return <Note key={"note_" + index} note={note.name}></Note>
             })}

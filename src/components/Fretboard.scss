@@ -12,16 +12,16 @@
 
 
   // Still scrolling in hard snaps instead of softly.
-  // overflow: auto;
-  // overscroll-behavior-x: contain;
-  // scroll-snap-type: x mandatory;
-  // scrollbar-width: 0;
+  overflow: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: 0;
 
-  // &::-webkit-scrollbar {
-  //   height: 0;  /* Remove scrollbar space */
-  //   background: transparent;  /* Optional: just make scrollbar invisible */
-  // }
-  //
+  &::-webkit-scrollbar {
+    height: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+  }
+  
 
   #fretNumbers {
     display: flex;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 
 import './Slider.scss';
 import { MusicContext } from '../context/MusicContext';
@@ -26,7 +26,7 @@ const Slider = ({ max }) => {
             type="range"
             value={music.fretCount}
             min="-1"
-            max={csf.fretsCap}
+            max={music.fretCap}
             onChange={handleChange}
           />
         </div>

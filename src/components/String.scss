@@ -11,22 +11,22 @@
       scroll-snap-align: start;
     }
 
-    .invisiNotes {
+    .invisibleNotes {
       position: absolute;
       left: 100%;
-      margin-left: 8px;
       display: flex;
+      margin-left: 8px;
       gap: 8px;
     }
 
     @media(max-width: 900px) {
-      .invisiNotes {
+      .invisibleNotes {
         margin-left: 6px;
         gap: 6px;
       }
     }
     @media(max-width: 600px) {
-      .invisiNotes {
+      .invisibleNotes {
         margin-left: 4px;
         gap: 4px;
       }
