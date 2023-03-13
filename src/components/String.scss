@@ -4,58 +4,34 @@
   gap: 8px;
   max-width: 100%;
 
+  .invisibleNotes {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    margin-left: 8px;
+    gap: 8px;
 
-
-  &.normal {
     .note {
-      scroll-snap-align: start;
-    }
-
-    .invisibleNotes {
-      position: absolute;
-      left: 100%;
-      display: flex;
-      margin-left: 8px;
-      gap: 8px;
-    }
-
-    @media(max-width: 900px) {
-      .invisibleNotes {
-        margin-left: 6px;
-        gap: 6px;
-      }
-    }
-    @media(max-width: 600px) {
-      .invisibleNotes {
-        margin-left: 4px;
-        gap: 4px;
-      }
+      max-width: min-content;
+      min-width: min-content;
+      height: 100%;
     }
   }
 
-  // &.normal {
-  //   &:nth-child(1)::before {
-  //     z-index: 5;
-  //     content: '';
-  //     position: absolute;
-  //     top: 0;
-  //     right: 0;
-  //     left: 0;
-  //     bottom: 0;
-  //     background-color: black;
-  //   }
-
- 
-  // }
-  // &.normal::after {
-  //   // content: '';
-  //   // position: absolute;
-  //   // top: 0;
-  //   // right: 0;
-  //   // left: 0;
-  //   // bottom: 0;
-  //   // background-color: black;
-  // }
+  @media(max-width: 900px) {
+    .invisibleNotes {
+      margin-left: 6px;
+      gap: 6px;
+    }
+  }
+  @media(max-width: 600px) {
+    .invisibleNotes {
+      margin-left: 4px;
+      gap: 4px;
+    }
+  }
 }
 @media(max-width: 900px) {
   .string {

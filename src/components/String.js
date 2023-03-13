@@ -10,59 +10,37 @@ const String = ({ index, firstNote, type }) => {
   const music = useContext(MusicContext);
   const csf = useContext(CSFContext);
 
-  // let frets = csf.sliderChanged ? music.fretCount : optimalFrets;
-  let notes = [];
   let pointer = "";
   let offset = music.notes.findIndex((note) => note.name === firstNote);
-
+  let notes = [];
   let invisibleNotes = [];
-  console.log("makestring");
 
-  switch (type) {
-    case "add":
-      return (
-        <div className={`string add`}>
-          <Note note="+"></Note>
-          {music.notes.map((note, index) => {
-            return <Note key={"note_" + index} note={note.name}></Note>
-          })}
-        </div>
-      )
-    case "remove":
-      for (let i = 0; i < 12; i++) {
-        pointer = (i + offset) % music.notes.length;
-        notes.push(music.notes[pointer]);
-      }
-      return (
-        <div className={`string remove`}>
-          <Note note="-"></Note>
-          {notes.map((note, index) => {
-            return <Note key={"note_" + index} note={note.name}></Note>
-          })}
-        </div>
-      )
-    default:
-      for (let i = 0; i < parseInt(music.fretCount) + 1; i++) {
-        pointer = (offset++) % music.notes.length;
-        notes.push(music.notes[pointer]);
-      }
-      // for (let i = 0; i < music.fretCap - music.fretCount; i++) {
-      //   pointer = (i + offset) % music.notes.length;
-      //   invisibleNotes.push(music.notes[pointer]);
-      // }
-      return (
-        <div id={"string_" + index} className={`string normal`}>
-          {notes.map((note, index) => {
-            return <Note key={"note_" + index} note={note.name}></Note>
-          })}
-          {/* <div className='invisibleNotes string normal'>
-            {invisibleNotes.map((note, index) => {
-              return <Note key={"note_" + index} note={note.name}></Note>
-            })}
-          </div> */}
-        </div>
-      )
+  useEffect(() => {
+    console.log("string.js");
+    
+  }, [])
+
+  for (let i = 0; i < parseInt(csf.fretCount) + 1; i++) {
+    pointer = (offset++) % music.notes.length;
+    notes.push(music.notes[pointer]);
   }
-};
+  // for (let i = 0; i < parseInt(csf.fretCap) - csf.fretCount; i++) {
+  //   pointer = (i + offset) % music.notes.length;
+  //   invisibleNotes.push(music.notes[pointer]);
+  // }
 
-export default String;
+  return (
+    <div id={"string_" + index} className={`string`}>
+      {notes.map((note, index) => {
+        return <Note key={"note_" + index} note={note.name}></Note>
+      })}
+      {/* <div className='invisibleNotes string'>
+        {invisibleNotes.map((note, index) => {
+          return <Note key={"note_" + index} note={note.name}></Note>
+        })}
+      </div> */}
+    </div>
+  );
+}
+
+  export default String;

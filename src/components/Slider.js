@@ -1,32 +1,32 @@
 import React, { useContext } from 'react';
 
 import './Slider.scss';
-import { MusicContext } from '../context/MusicContext';
 import { CSFContext } from '../context/CSFContext';
 
 const Slider = ({ max }) => {
-  const music = useContext(MusicContext);
+  // console.log("slider.js");
   const csf = useContext(CSFContext);
 
   const slider = React.createRef();
 
   function handleChange() {
+    csf.setPreferredFretCount(slider.current.value)
     csf.setSliderChanged(true);
-    music.setDisplayView('fretboard')
-    music.setFretCount(slider.current.value);
+    csf.setFretCount(slider.current.value);
+    csf.setDisplayView('fretboard')
   }
 
   return (
     <>
       <div className={`frets-slider`}>
-        <h3>Frets: {music.fretCount}</h3>
+        <h3>Frets: {csf.fretCount}</h3>
         <div className={`slider`}>
           <input
             ref={slider}
             type="range"
-            value={music.fretCount}
+            value={csf.fretCount}
             min="-1"
-            max={music.fretCap}
+            max={csf.fretCap}
             onChange={handleChange}
           />
         </div>

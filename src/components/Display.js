@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { MusicContext } from '../context/MusicContext';
+import { CSFContext } from '../context/CSFContext';
 
 import Fretboard from './Fretboard';
 import FretboardSettings from './FretboardSettings';
@@ -12,10 +12,12 @@ function RenderView({ view }) {
   if (view === "keyChange") return <KeyChange />
 }
 
+// console.log("display.js");
+
 const Display = () => {
-  const music = useContext(MusicContext);
+  const csf = useContext(CSFContext);
   return (
-    <RenderView view={music.displayView} />
+    <RenderView view={csf.displayView} />
   );
 };
 

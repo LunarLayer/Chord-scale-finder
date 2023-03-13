@@ -2,22 +2,24 @@ import React, { useState, useContext } from 'react';
 
 import './KeyChange.scss';
 import { MusicContext } from '../context/MusicContext';
+import { CSFContext } from '../context/CSFContext';
 
 const KeyChange = () => {
   const music = useContext(MusicContext);
+  const csf = useContext(CSFContext);
   const [selectedNote, setSelectedNote] = useState("");
   const [selectedScale, setSelectedScale] = useState("");
 
   function setScale(scale) {
     setSelectedScale(scale);
     music.setTonality({ ...music.tonality, scale: scale });
-    if (selectedNote) music.setDisplayView('fretboard')
+    if (selectedNote) csf.setDisplayView('fretboard')
   }
 
   function setNote(note) {
     setSelectedNote(note);
     music.setTonality({ ...music.tonality, note: note });
-    if (selectedScale) music.setDisplayView('fretboard')
+    if (selectedScale) csf.setDisplayView('fretboard')
   }
 
   
@@ -54,7 +56,7 @@ const KeyChange = () => {
             className={`minor ${selectedScale === 'minor' ? 'selected' : ''}`}
             onClick={() => setScale("minor")}>Minor
           </button>
-          <button className='done' onClick={() => music.setDisplayView('fretboard')}>Done</button>
+          <button className='done' onClick={() => csf.setDisplayView('fretboard')}>Done</button>
         </div>
       </div>
     </>

@@ -2,20 +2,26 @@ import React, { useContext, useEffect } from 'react';
 
 import './FretboardSettings.scss';
 import { MusicContext } from '../context/MusicContext';
+import { CSFContext } from '../context/CSFContext';
 
-import String from './String';
+import Note from './Note';
+
+// When to save:
+// color changed
+// displayView changed
 
 const FretboardSettings = () => {
   const music = useContext(MusicContext);
-  let notes = document.getElementsByClassName('note');
+  const csf = useContext(CSFContext); 
+  let existingNotes = document.getElementsByClassName('note');
 
   useEffect(() => {
     adaptFontSize();
   })
-  
+
   function adaptFontSize() {
     let fretboard = document.getElementById('fretboardSettings');
-    let width = notes[0].offsetWidth;
+    let width = existingNotes[0].offsetWidth;
 
     if (width === 45) {
       fretboard.style.fontSize = "25px";
@@ -25,25 +31,52 @@ const FretboardSettings = () => {
     }
   }
 
-
-
   function toggleColoredNotes() {
-    if (music.coloredNotes) {
-      music.setColoredNotes(false);
-    } else {
-      music.setColoredNotes(true);
-    }
+    csf.coloredNotes ? csf.setColoredNotes(false) : csf.setColoredNotes(true);
   }
 
+  const AddString = ({pos}) => {
+    return (
+      <div className={`string add ${pos}`}>
+        <Note note="+"></Note>
+        {music.notes.map((note, index) => {
+          return <Note key={"note_" + index} note={note.name}></Note>
+        })}
+      </div>
+    )
+  }
+
+  const RemoveString = ({startNote, index}) => {
+    let notes = [];
+    let offset = music.notes.findIndex((note) => note.name === startNote);
+    for (let i = 0; i < 12; i++) {
+      let pointer = (i + offset) % music.notes.length;
+      notes.push(music.notes[pointer]);
+    }
+    return (
+      <div className={`string remove ${index}`}>
+        <Note note="-"></Note>
+        {notes.map((note, index) => {
+          return <Note key={"note_" + index} note={note.name}></Note>
+        })}
+      </div>
+    )
+  }
+
+  
   return (
     <>
       <div id='fretboardSettings'>
         <div className='strings'>
-          <String type="add" index={parseInt(music.strings.length) + 1} />
-          {music.strings.map(string => {
-            return <String key={"string_" + string.number} index={string.number} firstNote={string.note} type="remove" />
+
+          <AddString pos={"top"}/>
+
+          {music.strings.map((string) => {
+            return <RemoveString key={"string_" + string.number} startNote={string.note} index={string.number}/>
           })}
-          <String type="add" index={0} />
+          
+          <AddString pos={"bottom"}/>
+
         </div>
         <div className='settings'>
           <button onClick={() => toggleColoredNotes()}>Colored notes</button>

@@ -1,41 +1,11 @@
 import React, { useState, useContext } from "react";
 
-import { CSFContext } from '../context/CSFContext';
-
 export const MusicContext = React.createContext();
 
 export default function MusicContextProvider({ children }) {
-  const csf = useContext(CSFContext);
-
-  let gap = ""
-  let padding = "";
-  let noteMinWidth = 20;
-  let noteMaxWidth = 45;
-
-  initValues();
-
-
-
-
-
-  const [displayView, setDisplayView] = useState("fretboard");
-  const [tonality, setTonality] = useState({ note: "C", scale: "Major" });
-  const [fretCap, setFretCap] = useState(() => {
-    let fretCap = (Math.floor(((csf.windowWidth - (padding * 2)) + gap) / (noteMinWidth + gap))) - 1;
-    if (fretCap > 24) return 24;
-    return fretCap;
-  });
-  const [fretCount, setFretCount] = useState(() => {
-    let optimalFrets = (Math.floor(((csf.windowWidth - (padding * 2)) + gap) / (noteMaxWidth + gap))) + 1;
-    if (csf.windowWidth < 600) {
-      return 12;
-    } else if (optimalFrets > fretCap) return fretCap;
-    return optimalFrets;
-  });
   
-  const [coloredNotes, setColoredNotes] = useState(false);
-
-  // Strings
+  const [tonality, setTonality] = useState({ note: "C", scale: "Major" });
+  
   const [strings, setStrings] = useState([
     { number: 4, note: "G" },
     { number: 3, note: "D" },
@@ -63,8 +33,6 @@ export default function MusicContextProvider({ children }) {
     setStrings(newArr);
   };
 
-
-  // Chord types
   const majorChords = {
     major: { type: "Major", name: "maj", interval: ["1", "3", "5"] },
     major6: "Major 6th",
@@ -122,31 +90,16 @@ export default function MusicContextProvider({ children }) {
   ];
 
 
-  function initValues() {
-    if (csf.windowWidth <= 600) {
-      padding = 5;
-      gap = 4;
-    } else if (csf.windowWidth > 600 && csf.windowWidth <= 900) {
-      padding = 15;
-      gap = 6;
-    } else {
-      padding = 20;
-      gap = 8;
-    }
-  }
+
 
   return (
     <MusicContext.Provider
       value={{
-        displayView, setDisplayView,
         notes,
         majorChords, minorChords,
-        fretCount, setFretCount,
-        fretCap, setFretCap,
         strings, setStrings,
         tonality, setTonality,
         addString, removeString,
-        coloredNotes, setColoredNotes,
       }}
     >
       {children}
