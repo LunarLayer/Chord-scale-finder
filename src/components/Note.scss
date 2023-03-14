@@ -8,7 +8,7 @@
 
   aspect-ratio: 1/ 1;
   min-width: calc(var(--note_min_width) * 1px);
-  width: calc(var(--note_max_width) * 1px);
+  width: calc(var(--note_width) * 1px);
   max-width: calc(var(--note_max_width) * 1px);
 
   border: 1px solid black;

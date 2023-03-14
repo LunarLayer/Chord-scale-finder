@@ -56,7 +56,7 @@ export default function CSFContextProvider({ children }) {
 
 
   function updateFrets(windowWidth) {
-    // Initialize optimal values
+    // TODO: CHeck if this needs to be replaced with getFretCount & getFretCrap
     let newFretCap = (Math.floor(((windowWidth - (padding * 2)) + gap) / (noteMinWidth + gap))) - 1;
     let newFretCount = (Math.floor(((windowWidth - (padding * 2)) + gap) / (noteMaxWidth + gap))) + 1;
     if (newFretCap > 24) newFretCap = 24;

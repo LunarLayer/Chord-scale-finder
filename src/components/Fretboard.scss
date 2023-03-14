@@ -22,7 +22,8 @@
       scroll-snap-align: start;
     }
 
-  #fretNumbers {
+  .fretnumbers {
+    position: relative;
     display: flex;
     gap: 8px;
     width: 100%;
@@ -32,8 +33,17 @@
       display: flex;
       justify-content: center;
       min-width: calc(var(--note_min_width) * 1px);
-      width: calc(var(--note_max_width) * 1px);
+      width: calc(var(--note_width) * 1px);
       max-width: calc(var(--note_max_width) * 1px);
+    }
+
+    .invisible {
+      position: absolute;
+      display: flex;
+      left: 100%;
+      margin-left: 8px;
+      gap: 8px;
+      width: fit-content;
     }
   }
 }
@@ -42,9 +52,14 @@
   #fretboard {
     gap: 6px;
 
-    #fretNumbers {
+    .fretnumbers {
       gap: 6px;
       margin-bottom: -6px;
+
+      .invisible {
+        gap: 6px;
+        margin-left: 6px;
+      }
     }
   }
 }
@@ -53,9 +68,14 @@
   #fretboard {
     gap: 4px;
 
-    #fretNumbers {
+    .fretnumbers {
       gap: 4px;
       margin-bottom: -4px;
+
+      .invisible {
+        gap: 4px;
+        margin-left: 4px;
+      }
     }
   }
 }

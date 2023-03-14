@@ -25,7 +25,7 @@ const String = ({ index, firstNote, type }) => {
     pointer = (offset++) % music.notes.length;
     notes.push(music.notes[pointer]);
   }
-  for (let i = 0; i < parseInt(csf.fretCap) - csf.fretCount; i++) {
+  for (let i = 0; i < 24 - csf.fretCount; i++) {
     pointer = (i + offset) % music.notes.length;
     invisibleNotes.push(music.notes[pointer]);
   }

@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import './Slider.scss';
 import { CSFContext } from '../context/CSFContext';
 
-const Slider = ({ max }) => {
+const Slider = () => {
   // console.log("slider.js");
   const csf = useContext(CSFContext);
 
