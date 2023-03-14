@@ -2,6 +2,7 @@
   position: relative;
   display: flex;
   gap: 8px;
+  width: fit-content;
   max-width: 100%;
 
   .invisibleNotes {
@@ -10,12 +11,13 @@
     top: 0;
     bottom: 0;
     display: flex;
+  
     margin-left: 8px;
     gap: 8px;
 
     .note {
-      max-width: min-content;
       min-width: min-content;
+      max-width: min-content;
       height: 100%;
     }
   }

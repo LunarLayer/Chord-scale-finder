@@ -7,6 +7,21 @@
   width: fit-content;
   max-width: 100%;
 
+   // Still scrolling in hard snaps instead of softly.
+    overflow: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: 0;
+  
+    &::-webkit-scrollbar {
+      height: 0;  /* Remove scrollbar space */
+      background: transparent;  /* Optional: just make scrollbar invisible */
+    }
+
+    .note {
+      scroll-snap-align: start;
+    }
+
   #fretNumbers {
     display: flex;
     gap: 8px;

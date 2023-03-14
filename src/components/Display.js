@@ -2,12 +2,12 @@ import React, { useContext } from 'react';
 
 import { CSFContext } from '../context/CSFContext';
 
-import Fretboard from './Fretboard';
+import NewFretboard from './NewFretboard';
 import FretboardSettings from './FretboardSettings';
 import KeyChange from './KeyChange';
 
 function RenderView({ view }) {
-  if (view === "fretboard") return <Fretboard />
+  if (view === "fretboard") return <NewFretboard />
   if (view === "fretboardSettings") return <FretboardSettings />
   if (view === "keyChange") return <KeyChange />
 }

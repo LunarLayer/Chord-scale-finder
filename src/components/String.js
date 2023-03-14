@@ -7,6 +7,7 @@ import { CSFContext } from '../context/CSFContext';
 import Note from './Note';
 
 const String = ({ index, firstNote, type }) => {
+  console.log("makeString");
   const music = useContext(MusicContext);
   const csf = useContext(CSFContext);
 
@@ -16,7 +17,7 @@ const String = ({ index, firstNote, type }) => {
   let invisibleNotes = [];
 
   useEffect(() => {
-    console.log("string.js");
+
     
   }, [])
 
@@ -24,21 +25,21 @@ const String = ({ index, firstNote, type }) => {
     pointer = (offset++) % music.notes.length;
     notes.push(music.notes[pointer]);
   }
-  // for (let i = 0; i < parseInt(csf.fretCap) - csf.fretCount; i++) {
-  //   pointer = (i + offset) % music.notes.length;
-  //   invisibleNotes.push(music.notes[pointer]);
-  // }
+  for (let i = 0; i < parseInt(csf.fretCap) - csf.fretCount; i++) {
+    pointer = (i + offset) % music.notes.length;
+    invisibleNotes.push(music.notes[pointer]);
+  }
 
   return (
     <div id={"string_" + index} className={`string`}>
       {notes.map((note, index) => {
         return <Note key={"note_" + index} note={note.name}></Note>
       })}
-      {/* <div className='invisibleNotes string'>
+      <div className='invisibleNotes string'>
         {invisibleNotes.map((note, index) => {
           return <Note key={"note_" + index} note={note.name}></Note>
         })}
-      </div> */}
+      </div>
     </div>
   );
 }

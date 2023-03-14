@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect} from "react";
 
 export const CSFContext = React.createContext();
 
@@ -6,7 +6,7 @@ export default function CSFContextProvider({ children }) {
 
   // Window
   const [displayView, setDisplayView] = useState("fretboard");
-  const [windowWidth, setWindowWidth] = useState(document.documentElement.clientWidth);
+  const [windowWidth, setWindowWidth] = useState(getWindowWidth());
 
   // Toolbar
   const [sliderChanged, setSliderChanged] = useState(false);
@@ -20,18 +20,8 @@ export default function CSFContextProvider({ children }) {
 
   const [coloredNotes, setColoredNotes] = useState(false);
   const [preferredFretCount, setPreferredFretCount] = useState();
-  const [fretCap, setFretCap] = useState(() => {
-    let fretCap = (Math.floor(((windowWidth - (padding * 2)) + gap) / (noteMinWidth + gap))) - 1;
-    if (fretCap > 24) return 24;
-    return fretCap;
-  });
-  const [fretCount, setFretCount] = useState(() => {
-    let newFretCount = (Math.floor(((windowWidth - (padding * 2)) + gap) / (noteMaxWidth + gap))) + 1;
-    if (windowWidth < 600) {
-      return 12;
-    } else if (newFretCount > fretCap) return fretCap;
-    return newFretCount;
-  });
+  const [fretCap, setFretCap] = useState(getFretCap());
+  const [fretCount, setFretCount] = useState(getFretCount());
 
 
   useEffect(() => {
@@ -45,6 +35,24 @@ export default function CSFContextProvider({ children }) {
       window.removeEventListener('resize', handleResize); 
     };
   });
+
+  function getFretCount() {
+    let newFretCount = (Math.floor(((windowWidth - (padding * 2)) + gap) / (noteMaxWidth + gap))) + 1;
+    if (windowWidth < 600) {
+      return 12;
+    } else if (newFretCount > fretCap) return fretCap;
+    return newFretCount;
+  }
+
+  function getFretCap() {
+    let fretCap = (Math.floor(((windowWidth - (padding * 2)) + gap) / (noteMinWidth + gap))) - 1;
+    if (fretCap > 24) return 24;
+    return fretCap;
+  }
+
+  function getWindowWidth() {
+    return document.documentElement.clientWidth;
+  }
 
 
   function updateFrets(windowWidth) {
@@ -87,12 +95,13 @@ export default function CSFContextProvider({ children }) {
 
         // Toolbar
         sliderChanged, setSliderChanged,
-
+        
         // Fretboard
         coloredNotes, setColoredNotes,
         fretCount, setFretCount,
         fretCap, setFretCap,
         preferredFretCount, setPreferredFretCount,
+        getFretCount, getFretCap,
       }}
     >
       {children}
